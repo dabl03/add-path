@@ -1,12 +1,12 @@
 # Add Path
 <p>
-  Esta es una herramienta para poder solo agregar en la variable de entorno PATH
-  solo las rutas necesarias para llamar los interpretes o compiladores necesario
+  Esta es una herramienta para poder solo agregar la variable de entorno PATH
+  solo las rutas necesarias para llamar a los intérpretes o compiladores necesarios
   para que pueda programar en ellos.
 </p>
 ## Meta
 <p>
-  Cuando desarrollas en muchos lenguajes, terminas agregandolos al la ruta de busqueda y mientras mas usa, mas se satura y pareciera que se pone mas lenta la consola. Aqui esta el ejemplo de lo que se quiere evitar:
+  Cuando desarrollas en muchos lenguajes, terminas agregándolos al la ruta de búsqueda y mientras más usa, más se satura y pareciera que se pone más lenta la consola. Aquí está un ejemplo de lo que se quiere evitar:
 </p>
 <pre><code>
   --Rutas del sistema--
@@ -26,7 +26,7 @@
   C:\ruta\rust\bin
 </code></pre>
 <p>
-  Nota: Por privacidad cambio la ruta absoluta por "ruta". Tambien mencionare que en linux deberia ser lo mismo sin "c:\" y con "/" en lugar de "\". 
+  Nota: Por privacidad cambio la ruta absoluta por "ruta". También mencionaré que en linux debería ser lo mismo sin "c:\" y con "/" en lugar de "\". 
 </p>
 <p>Para solo tener lo que necesito en la sesion de la consola, he desarrollado esta herramienta.</p>
 ## ¿Como usarlo?
@@ -47,3 +47,7 @@ Obtener una ayuda mas completa:
 <pre><code>
   addPath --h
 </code></pre>
+## Problemas:
+<ul>
+  <li>Al llamar una segunda vez con el mismo lenguaje se corrompe el path en windows</li>
+</ul>
