@@ -45,7 +45,7 @@ def setPath(lang:str, silent_mode:bool=True, *paths:str)->bool:
       *paths (str): Paths ligado al lenguaje.
 
   Returns:
-      bool: ¿Se guardo el cambio?
+      bool: ¿Se guardó el cambio?
   """;
   lang=lang.lower();
   insert=False;
@@ -71,8 +71,6 @@ def setPath(lang:str, silent_mode:bool=True, *paths:str)->bool:
 
 def out(paths:list):
   """Escribe en el archivo out_file los paths pasado separado por la variable SEPARATOR
-----------------------hacer----------------------------------------------------------------
-filtrar los paths para que no se repitan ni los que estan en la consola actual
 
   Args:
       paths (list(str)): Los paths a guardar en el archivo.
@@ -89,7 +87,7 @@ def viewLang(langs:tuple,s_mode:bool=False):
 
   Args:
       langs (tuple(str)): Lenguajes a buscar.
-      s_mode (bool): Para evitar confirmación en cada lenguale. Default False.
+      s_mode (bool): Para evitar confirmación en cada lenguaje. Default False.
   """;
   print("Lenguajes disponibles:");
   if '*' in langs:
@@ -123,13 +121,13 @@ def confirm(msg:str=None)->bool:
   io="";
   if msg!=None:
     print(msg);
-  while io=="" or io not in "ynYN": io=input("Para confirmar presione \"y\", para negar \"n\"\n> ");
+  while io=="" or io not in "ynYN": io=input("Para confirmar presione \"y\" y para negar \"n\"\n> ");
   return io in "yY";
 def test():
   return None;
 def help():
   print(f"""Bienvenido, esta es una herramienta para agregar los paths necesario 
-para desarrollar en un lenguaje especifico, en la ruta de entorno de la consola actual.
+para desarrollar en un lenguaje específico, en la ruta de entorno de la consola actual.
 
 Parametros disponibles:
   {', '.join(P_HELP)} -- Mostramos esta ayuda.
@@ -150,13 +148,13 @@ Forma de usar este script:
     No pedir confirmación.
   addPath.py --{P_GET[0]} LANG1 LANG2 LANG3
     Solo muestra una lista de los lenguajes y sus paths si existe en el archivo
-    "{REGISTER}", sino no se muestra.
+    "{REGISTER}", si no no se muestra.
   addPath.py --{P_GET[0]} * --{P_SILENT[0]}
-    Muestra una lista completa de los lenguajes disponibles con sus paths asociado,
+    Muestra una lista completa de los lenguajes disponibles con sus paths asociados,
     sin esperar a que ingrese enter por cada lenguaje.
   """);
 def interpret(param:dict)->dict:
-  """Interpreta los parametros pasados para retornar un diccionario de lo que se quiere hacer.
+  """Interpreta los pasados para retornar un diccionario de lo que se quiere hacer.
 
   Args:
       param (dict{--flag:value}): Parametro a interpretar.
@@ -166,7 +164,7 @@ def interpret(param:dict)->dict:
   """
   langs=[];# Lenguajes a sacar.
   newlang={};# Leguaje a agregar.
-  getlang=[];# Mostramos los paths associados a los lenguaje.
+  getlang=[];# Mostramos los paths asociados a los lenguajes.
   silent_mode=False;
   ishelp=False;
   for p in param:
