@@ -56,14 +56,14 @@ Obtener una ayuda mas completa:
   addPath --h
 </code></pre>
 
-## ¿Como funciona?
+## ¿Cómo funciona?
 
-El archivo python trata la entrada del usuario, mientras que los script altera la variable de entorno. El archivo addPath.py genera un archivo script temporal que tendrá todas las url a agregar. Sino tiene, no se consiguio url asociada al lenguaje simplemente no crea un archivo.
+El archivo addPath.py trata la entrada del usuario, mientras que el script altera la variable del entorno. El archivo addPath.py genera un archivo script temporal que tendrá todas las url a agregar. Si no se creo el archivo, es porque no hay nada que agregar en el path.
 
 ## Sistema operativos soportados:
 
 - Windows
 - Linux
 
-> Nota: Si quieres para otro OS, deberas crear un nuevo script (que se pueda interpretar en tu OS). El script debe llamar al archivo python con el parametro "--OUT "you_file_temp_script.script_extension"", el archivo python generará un script con el mismo nombre que el parametro --OUT, debes comprobar si se genero, depues llamar a ese script y eliminarlo (ya no es necesario que se quede).
-> Tambien debes modificar la función out y la variable global "SEPARATOR" del archivo python, para adaptar al nuevo sistema operativo.
+> Nota: Si quieres para otro OS, deberás crear un nuevo script (que se pueda interpretar en tu OS). El script debe llamar al archivo python con el parametro "--OUT "you_file_temp_script.script_extension"", el archivo python generará un script con el mismo nombre que el parametro --OUT, debes comprobar si se generó, depues de llamar a ese script, el archivo temporal se elimina (ya no es necesario que se quede).
+> También debes modificar la función out y la variable global "SEPARATOR" del archivo python, para adaptar al nuevo sistema operativo.
