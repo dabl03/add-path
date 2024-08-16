@@ -3,23 +3,22 @@
 # Get the directory of the current script
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-# Define the output file path
-OUT_FILE="$SCRIPT_DIR/out.tmp"
+# Define output file path
+OUTPUT_FILE="$SCRIPT_DIR/out.tmp.sh"
 
-# Call your Python script (assuming it's named addPath.py)
-python3 addPath.py "$@" --OUT "$OUT_FILE"
+# Call your Python script with arguments and redirect output to the temporary file
+python3 addPath.py "$@" > "$OUTPUT_FILE"
 
-# Check if the output file exists
-if [ -f "$OUT_FILE" ]; then
-  # Read the content of the output file
-  while IFS= read -r line; do
-    # Append the line to PATH (if not empty)
-    if [[ ! -z "$line" ]]; then
-      export PATH="$PATH:$line"
-    fi
-  done < "$OUT_FILE"
-  # Remove the temporary file quietly
-  rm -f "$OUT_FILE"
+# Check if the temporary file exists
+if [ -f "$OUTPUT_FILE" ]; then
+  # Execute the contents of the temporary file
+  source "$OUTPUT_FILE"
+  # Delete the temporary file
+  rm -f "$OUTPUT_FILE"
 fi
+
+# No need to explicitly unset variables in Bash
+
+sleep 2
 
 # Equivalente de addPath.bat generado por https://gemini.google.com/

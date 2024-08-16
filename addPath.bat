@@ -1,16 +1,17 @@
 @ECHO OFF
-set DIR_BASE=%~dp0
-set OUT="%DIR_BASE%out.tmp"
 
-addPath.py %* --OUT %OUT%
+set "DIR_BASE=%~dp0"
+set "OUT=%DIR_BASE%out.tmp.bat"
+
+addPath.py %* --OUT "%OUT%"
 
 if EXIST "%OUT%" (
-  set out_path=
-  set /p out_path=<%OUT%
-  echo "%out_path%"
-  IF "%out_path%"=="" (goto del)
-  set PATH=%PATH%;%out_path%
-  :del
-  DEL %OUT% /Q
+  call "%OUT%"
+  DEL "%OUT%" /Q
 )
+set DIR_BASE=
+set OUT=
+
+:: Para test:
+:END 
 @ECHO ON

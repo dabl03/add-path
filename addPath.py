@@ -7,7 +7,7 @@ HEADER="NOMBRE-DEL-LENAGUAJE,RUTA1,RUTA2-OPCIONAL,RUTA3-OPCIONAL,..., Nota: \"Es
 SEPARATOR=';' if os.name=="nt" else (
   ':' if os.name=="poxid" else None
 );
-out_file=f"{DIR_BASE}/query/out.tmp";
+out_file=f"{DIR_BASE}/query/out.tmp.bat";
 P_HELP=('h','?',"help");
 P_SILENT=('s', "silent");
 P_OUT=("out","o");
@@ -81,7 +81,15 @@ def out(paths:list):
     path=os.path.normcase(os.path.abspath(path));
     if path not in arr_out and path not in environ_path:
       arr_out.append(path);
-  with open(out_file,'w') as f: f.write(SEPARATOR.join(arr_out));
+  if not arr_out:
+    return;
+  with open(out_file,'w') as f:
+    if os.name=="nt":
+      f.write("set PATH=%PATH%;"+SEPARATOR.join(arr_out));
+    elif os.name=="poxid":
+      f.write("export PATH=\"$PATH:"+SEPARATOR.join(arr_out)+'"');
+    else: raise OSError(f"Systema operativo basado en \"{os.name}\" no soportado.");
+
 def viewLang(langs:tuple,s_mode:bool=False):
   """Muestra por consola una lista de los lenguajes con sus paths asociados.
 

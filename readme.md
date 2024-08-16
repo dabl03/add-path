@@ -4,7 +4,13 @@
   solo las rutas necesarias para llamar a los intérpretes o compiladores necesarios
   para que pueda programar en ellos.
 </p>
+
+## Requisitos
+
+Debes tener instalado python 3 o superior.
+
 ## Meta
+
 <p>
   Cuando desarrollas en muchos lenguajes, terminas agregándolos al la ruta de búsqueda y mientras más usa, más se satura y pareciera que se pone más lenta la consola. Aquí está un ejemplo de lo que se quiere evitar:
 </p>
@@ -29,7 +35,9 @@
   Nota: Por privacidad cambio la ruta absoluta por "ruta". También mencionaré que en linux debería ser lo mismo sin "c:\" y con "/" en lugar de "\". 
 </p>
 <p>Para solo tener lo que necesito en la sesion de la consola, he desarrollado esta herramienta.</p>
+
 ## ¿Como usarlo?
+
 <p>
   Debes llamar solo al script .bat o .bash (dependiendo de tu sistema operativo), y pasar el lenguaje para agregar en el path y listo. Claro, debes tener el lenguaje con sus path asociado en el archivo "compilerAdd.csv". 
 </p>
@@ -47,7 +55,15 @@ Obtener una ayuda mas completa:
 <pre><code>
   addPath --h
 </code></pre>
-## Problemas:
-<ul>
-  <li>Al llamar una segunda vez con el mismo lenguaje se corrompe el path en windows</li>
-</ul>
+
+## ¿Como funciona?
+
+El archivo python trata la entrada del usuario, mientras que los script altera la variable de entorno. El archivo addPath.py genera un archivo script temporal que tendrá todas las url a agregar. Sino tiene, no se consiguio url asociada al lenguaje simplemente no crea un archivo.
+
+## Sistema operativos soportados:
+
+- Windows
+- Linux
+
+> Nota: Si quieres para otro OS, deberas crear un nuevo script (que se pueda interpretar en tu OS). El script debe llamar al archivo python con el parametro "--OUT "you_file_temp_script.script_extension"", el archivo python generará un script con el mismo nombre que el parametro --OUT, debes comprobar si se genero, depues llamar a ese script y eliminarlo (ya no es necesario que se quede).
+> Tambien debes modificar la función out y la variable global "SEPARATOR" del archivo python, para adaptar al nuevo sistema operativo.
