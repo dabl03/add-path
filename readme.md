@@ -66,4 +66,5 @@ El archivo addPath.py trata la entrada del usuario, mientras que el script alter
 - Linux
 
 > Nota: Si quieres para otro OS, deberás crear un nuevo script (que se pueda interpretar en tu OS). El script debe llamar al archivo python con el parametro "--OUT "you_file_temp_script.script_extension"", el archivo python generará un script con el mismo nombre que el parametro --OUT, debes comprobar si se generó, depues de llamar a ese script, el archivo temporal se elimina (ya no es necesario que se quede).
+> 
 > También debes modificar la función out y la variable global "SEPARATOR" del archivo python, para adaptar al nuevo sistema operativo.
