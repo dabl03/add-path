@@ -83,7 +83,6 @@ def out(paths:list):
       arr_out.append(path);
   if not arr_out:
     return;
-  print(out_file);
   with open(out_file,'w') as f:
     if os.name=="nt":
       f.write("set PATH=%PATH%;"+SEPARATOR.join(arr_out));
