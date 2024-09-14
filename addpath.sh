@@ -7,7 +7,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_FILE="$SCRIPT_DIR/out.tmp.sh"
 
 # Call your Python script with arguments and redirect output to the temporary file
-python3 addPath.py "$@" > "$OUTPUT_FILE"
+python3 addPath.py "$@" --o "$OUTPUT_FILE"
 
 # Check if the temporary file exists
 if [ -f "$OUTPUT_FILE" ]; then

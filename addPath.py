@@ -5,9 +5,9 @@ DIR_BASE=os.path.dirname(__file__);
 REGISTER=f"{DIR_BASE}/query/compilerAdd.csv";
 HEADER="NOMBRE-DEL-LENAGUAJE,RUTA1,RUTA2-OPCIONAL,RUTA3-OPCIONAL,..., Nota: \"Esta linea del archivo se ignora\", Siempre debe haber una linea de mas en el archivo.\n";
 SEPARATOR=';' if os.name=="nt" else (
-  ':' if os.name=="poxid" else None
+  ':' if os.name=="posix" else None
 );
-out_file=f"{DIR_BASE}/query/out.tmp.bat";
+out_file=f"{DIR_BASE}/query/out.tmp";
 P_HELP=('h','?',"help");
 P_SILENT=('s', "silent");
 P_OUT=("out","o");
@@ -83,11 +83,12 @@ def out(paths:list):
       arr_out.append(path);
   if not arr_out:
     return;
+  print(out_file);
   with open(out_file,'w') as f:
     if os.name=="nt":
       f.write("set PATH=%PATH%;"+SEPARATOR.join(arr_out));
-    elif os.name=="poxid":
-      f.write("export PATH=\"$PATH:"+SEPARATOR.join(arr_out)+'"');
+    elif os.name=="posix":
+      f.write(("export PATH=\"$PATH:"+SEPARATOR.join(arr_out))+'"');
     else: raise OSError(f"Systema operativo basado en \"{os.name}\" no soportado.");
 
 def viewLang(langs:tuple,s_mode:bool=False):
