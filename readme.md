@@ -32,6 +32,9 @@ Debes tener instalado python 3 o superior.
   C:\ruta\rust\bin
 </code></pre>
 <p>
+  También hay situaciones donde dos rutas haya archivos con los mismos nombres y genere un conflicto al llamarlo en la consola.
+</p>
+<p>
   Nota: Por privacidad cambio la ruta absoluta por "ruta". También mencionaré que en linux debería ser lo mismo sin "c:\" y con "/" en lugar de "\". 
 </p>
 <p>Para solo tener lo que necesito en la sesion de la consola, he desarrollado esta herramienta.</p>
