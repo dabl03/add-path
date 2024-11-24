@@ -173,6 +173,7 @@ def interpret(param:dict)->dict:
   langs=[];# Lenguajes a sacar.
   newlang={};# Leguaje a agregar.
   getlang=[];# Mostramos los paths asociados a los lenguajes.
+  is_get_lang=False;
   silent_mode=False;
   ishelp=False;
   for p in param:
@@ -198,6 +199,7 @@ def interpret(param:dict)->dict:
       elif key in P_GET:
         # Mostramos los lenguajes.
         getlang+=param[p];
+        is_get_lang=True;
         continue;
       else:
         return {
@@ -208,6 +210,8 @@ def interpret(param:dict)->dict:
     else:
       langs.append(p);
       langs+=param[p];
+  if not getlang and is_get_lang:
+    getlang=['*'];# View all languaje
   return {
     "langs":langs,
     "n-lang":newlang,
