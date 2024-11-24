@@ -17,8 +17,4 @@ if [ -f "$OUTPUT_FILE" ]; then
   rm -f "$OUTPUT_FILE"
 fi
 
-# No need to explicitly unset variables in Bash
-
-sleep 2
-
 # Equivalente de addPath.bat generado por https://gemini.google.com/
